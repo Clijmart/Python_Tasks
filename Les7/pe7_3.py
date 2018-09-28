@@ -1,0 +1,11 @@
+kaartnummers = open('kaartnummers.txt')
+lines = kaartnummers.readlines()
+numbers = []
+
+for line in lines:
+    numbers.append(line[:6])
+
+maxNumber = max(numbers)
+
+print('Deze file telt ' + str(len(numbers)) + ' regels.')
+print('Het grootste kaartnummer is: ' + maxNumber + ' en dat staat op regel ' + str(numbers.index(maxNumber) + 1) + '.')
