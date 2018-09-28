@@ -1,34 +1,59 @@
+vastePrijs = 15
+leeftijdKorting = 0.65
+weekendLeeftijdKorting = 0.70
+weekendKorting = 0.60
+prijsKorteAfstand = 0.80
+prijsLangeAfstand = 0.60
+standaardAfstandPrijsVerandering = 50
+jeugdTariefLeeftijd = 12
+ouderenTariefLeeftijd = 65
+
+def inputLeeftijd():
+    leeftijd = int(input('Geef je leeftijd: '))
+    return leeftijd
+
+def inputWeekend():
+    weekendrit = input('Reis je in het weekend? (Ja/Nee): ').lower()
+    return weekendrit == 'ja'
+
+def inputAfstandKM():
+    afstandKM = int(input('Hoeveel kilometer reis je? \nAfstand: '))
+    return afstandKM
+
 def standaardtarief(afstandKM):
-    if(afstandKM <= 50):
+    if(afstandKM <= standaardAfstandPrijsVerandering):
         if(afstandKM < 0):
-            return 0
+            standaardTarief = 0
         else:
             # 50- KM, 0.80 per KM
-            return afstandKM * 0.80
+            standaardTarief = afstandKM * prijsKorteAfstand
     else:
         # 50+ KM, vaste prijs van €15 + 0.60 per KM
-        return afstandKM * 0.60 + 15
+        standaardTarief = afstandKM * prijsLangeAfstand + vastePrijs
+    return standaardTarief
 
 def ritprijs(leeftijd, weekendrit, afstandKM):
     standaardTarief = standaardtarief(afstandKM)
+    rechtOpLeeftijdKorting = leeftijd < jeugdTariefLeeftijd or leeftijd >= ouderenTariefLeeftijd
     if(weekendrit):
-        if(leeftijd < 12 or leeftijd >= 65):
+        if(rechtOpLeeftijdKorting):
             # Weekendtarief voor <12 en 65+, 35% korting
-            return standaardTarief * 0.65
+            ritprijs = standaardTarief * leeftijdKorting
         else:
             # Weekendtarief voor de rest, 40% korting
-            return standaardTarief * 0.60
+            ritprijs = standaardTarief * weekendKorting
     else:
-        if(leeftijd < 12 or leeftijd >= 65):
+        if(rechtOpLeeftijdKorting):
             # Weekdagtarief voor <12 en 65+, 30% korting
-            return standaardTarief * 0.70
+            ritprijs = standaardTarief * weekendLeeftijdKorting
         else:
             # Weekdagtarief voor de rest, geen korting
-            return standaardTarief
+            ritprijs = standaardTarief
+    return ritprijs
 
 
-leeftijd = 65
-weekendrit = True
-afstandKM = 60
+leeftijd = inputLeeftijd()
+weekendrit = inputWeekend()
+afstandKM = inputAfstandKM()
 
 print('De ritprijs is €' + str(round(ritprijs(leeftijd, weekendrit, afstandKM), 2)))
