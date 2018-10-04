@@ -44,7 +44,7 @@ def toon_aantal_kluizen_vrij():
 
 def nieuwe_kluis():
     kluizen_list = []
-    for kluis_nummer in range(1, 13):
+    for kluis_nummer in range(1, totaal_aantal_kluizen + 1):
         kluizen_list.append(kluis_nummer)
     kluizen_file = open('kluizen.txt')
     kluizen_bezet = kluizen_file.readlines()
