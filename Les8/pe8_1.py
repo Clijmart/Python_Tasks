@@ -1,13 +1,15 @@
 def seizoen(maand):
-    if 3 >= maand <= 5:
-        seizoen = 'lente'
-    elif 6 >= maand <= 8:
-        seizoen = 'zomer'
-    elif 9 >= maand <= 11:
-        seizoen = 'herfst'
+    if maand in [3, 4, 5]:
+        output = 'Deze maand valt in de lente'
+    elif maand in [6, 7, 8]:
+        output = 'Deze maand valt in de zomer'
+    elif maand in [9, 10, 11]:
+        output = 'Deze maand valt in de herfst'
+    elif maand in [12, 1, 2]:
+        output = 'Deze maand valt in de winter'
     else:
-        seizoen = 'winter'
-    return 'Deze maand valt in de ' + seizoen
+        output = 'Error. ' + str(maand) + ' is niet een maandnummer!'
+    return output
 
 
 print(seizoen(int(input('Geef een maandnummer: '))))
