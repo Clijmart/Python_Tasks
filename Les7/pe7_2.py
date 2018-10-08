@@ -1,8 +1,7 @@
 kaartnummers = open('kaartnummers.txt')
-for i in range(6):
-    line = kaartnummers.readline()
-    nummer = line[:6]
-    naam = line[8:-1]
-
-    print(naam + ' heeft kaartnummer: ' + nummer)
+lines = kaartnummers.readlines()
 kaartnummers.close()
+for line in lines:
+    nummer = line[:line.index(',')]
+    naam = line[line.index(',') + 2:-1]
+    print(naam + ' heeft kaartnummer: ' + nummer)
