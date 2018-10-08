@@ -4,12 +4,9 @@ def convert(gradenCelcius):
 
 
 def table():
+    print('  F       C')
     for gradenCelcius in range(-30, 41, 10):
-        outputFahrenheit = '     ' + str(float(convert(gradenCelcius)))
-        outputCelcius = '     ' + str(float(gradenCelcius))
-
-        print(outputFahrenheit[-5:] + outputCelcius[-8:])
+        print('{:5}   {:5}'.format(convert(gradenCelcius), float(gradenCelcius)))
 
 
-print('  F       C')
 table()
