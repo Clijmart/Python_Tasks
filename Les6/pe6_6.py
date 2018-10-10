@@ -1,8 +1,10 @@
 def wijzig(letterlijst):
-    lijst = 'test2'
+    letterlijst[0] = 'd'
+    letterlijst[1] = 'e'
+    letterlijst[2] = 'f'
 
 
-lijst = 'test1'
+lijst = ['a', 'b', 'c']
 print(lijst)
 wijzig(lijst)
 print(lijst)
