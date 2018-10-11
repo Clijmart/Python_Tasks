@@ -107,4 +107,13 @@ def kluis_teruggeven():
     input_start()
 
 
+def check_file():
+    try:
+        kluizen_file = open('kluizen.txt')
+    except:
+        kluizen_file = open('kluizen.txt', 'w+')
+    kluizen_file.close()
+
+
+check_file()
 input_start()
