@@ -3,9 +3,9 @@ lines = kaartnummers.readlines()
 numbers = []
 
 for line in lines:
-    numbers.append(line[:6])
+    numbers.append(int(line[:line.index(',')]))
 
 maxNumber = max(numbers)
 
 print('Deze file telt ' + str(len(numbers)) + ' regels.')
-print('Het grootste kaartnummer is: ' + maxNumber + ' en dat staat op regel ' + str(numbers.index(maxNumber) + 1) + '.')
+print('Het grootste kaartnummer is: ' + str(maxNumber) + ' en dat staat op regel ' + str(numbers.index(maxNumber) + 1) + '.')
