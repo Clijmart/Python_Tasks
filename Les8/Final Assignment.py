@@ -39,7 +39,6 @@ def toon_aantal_kluizen_vrij():
     else:
         print('Er zijn nog ' + str(kluizen_vrij) + ' kluizen vrij')
     input('\nKlik op Enter om terug naar het menu te gaan')
-    input_start()
 
 
 def nieuwe_kluis():
@@ -63,7 +62,6 @@ def nieuwe_kluis():
     else:
         print('Sorry, er zijn geen kluizen meer vrij')
     input('\nKlik op Enter om terug naar het menu te gaan')
-    input_start()
 
 
 def kluis_openen():
@@ -74,14 +72,14 @@ def kluis_openen():
     kluizen_bezet = kluizen_file.readlines()
     kluizen_file.close()
     print(empty_lines)
+    codeCorrect = False
     for file_line in kluizen_bezet:
         if file_line == str(kluis_nummer) + ';' + str(kluis_code) + '\n':
             print('Code correct, kluis geopend')
-            input('\nKlik op Enter om terug naar het menu te gaan')
-            input_start()
-    print('Code incorrect!')
+            codeCorrect = True
+    if not(codeCorrect):
+        print('Code incorrect!')
     input('\nKlik op Enter om terug naar het menu te gaan')
-    input_start()
 
 
 def kluis_teruggeven():
@@ -92,6 +90,7 @@ def kluis_teruggeven():
     kluizen_bezet = kluizen_file.readlines()
     kluizen_file.close()
     print(empty_lines)
+    codeCorrect = False
     for file_line in kluizen_bezet:
         if file_line == str(kluis_nummer) + ';' + str(kluis_code) + '\n':
             kluizen_bezet.pop(kluizen_bezet.index(file_line))
@@ -100,11 +99,10 @@ def kluis_teruggeven():
                 kluizen_file.write(line)
             kluizen_file.close()
             print('Kluis verwijderd')
-            input('\nKlik op Enter om terug naar het menu te gaan')
-            input_start()
-    print('Code incorrect!')
+            codeCorrect = True
+    if not(codeCorrect):
+        print('Code incorrect!')
     input('\nKlik op Enter om terug naar het menu te gaan')
-    input_start()
 
 
 def check_file():
