@@ -12,7 +12,7 @@ def inlezen_eindstation(stations, beginstation):
     while True:
         eindstation = input("Wat is je eindstation? ")
         if eindstation in stations:
-            if stations[eindstation < beginstation]:
+            if stations.index(eindstation) > stations.index(beginstation):
                 break
         print("Deze trein komt niet in " + eindstation + ".")
     return eindstation
