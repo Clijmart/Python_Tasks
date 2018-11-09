@@ -1,6 +1,9 @@
 def inlezen_beginstation(stations):
     while True:
         beginstation = input("Wat is je beginstation? ")
+        if beginstation == stations[-1]:
+            print(beginstation + " is het eindstation.")
+            continue
         if beginstation in stations:
             break
         else:
